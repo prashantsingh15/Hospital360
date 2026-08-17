@@ -17,6 +17,7 @@
   --primary-text: #0b5ce0;
   --emerald-text: #047857;
   --on-emerald: #022c22;
+  --surface-glass: rgba(255, 255, 255, 0.85);
 }
 
 .dark {
@@ -30,6 +31,7 @@
   --primary-text: #4d9fff;
   --emerald-text: #34d399;
   --on-emerald: #022c22;
+  --surface-glass: rgba(16, 26, 46, 0.85);
 }
 
 @theme inline {
@@ -231,7 +233,7 @@
 /* Utilities                                                           */
 /* ------------------------------------------------------------------ */
 @utility glass {
-  background-color: color-mix(in oklab, var(--color-surface) 72%, transparent);
+  background-color: var(--surface-glass);
   backdrop-filter: blur(16px) saturate(1.5);
   -webkit-backdrop-filter: blur(16px) saturate(1.5);
 }
