@@ -5,7 +5,6 @@ import { site } from "@/lib/site";
 import { Card } from "@/components/ui/card";
 import { PageHeader } from "@/components/shared/page-header";
 import { Section } from "@/components/shared/section";
-import { AppointmentWizard } from "@/components/appointment/appointment-wizard";
 
 export const metadata: Metadata = createMetadata({
   title: "Book an Appointment",
@@ -21,13 +20,10 @@ const perks = [
   "Reports on your phone",
 ];
 
-export default async function AppointmentPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ doctor?: string }>;
-}) {
-  const { doctor } = await searchParams;
+import { Suspense } from "react";
+import { AppointmentWizardWrapper } from "@/components/appointment/appointment-wizard-wrapper";
 
+export default function AppointmentPage() {
   return (
     <>
       <PageHeader
@@ -42,7 +38,9 @@ export default async function AppointmentPage({
 
       <Section>
         <div className="grid items-start gap-8 lg:grid-cols-[1.6fr_1fr]">
-          <AppointmentWizard initialDoctor={doctor} />
+          <Suspense fallback={<div className="h-96 animate-pulse rounded-3xl bg-muted-soft" />}>
+            <AppointmentWizardWrapper />
+          </Suspense>
 
           <aside className="flex flex-col gap-6">
             <Card className="p-6 sm:p-8">

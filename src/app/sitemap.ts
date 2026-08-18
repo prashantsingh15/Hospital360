@@ -18,6 +18,8 @@ const staticRoutes: { path: string; priority: number }[] = [
   { path: "/terms", priority: 0.3 },
 ];
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
