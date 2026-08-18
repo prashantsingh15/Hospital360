@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { doctors, getDepartmentBySlug } from "@/data";
 import { Button } from "@/components/ui/button";
 import { DoctorCard } from "@/components/cards/doctor-card";
@@ -36,6 +37,14 @@ export function DoctorsPreview() {
           </Reveal>
         ))}
       </div>
+      <Reveal className="mt-10 flex justify-center sm:hidden">
+        <Button variant="outline" size="lg" className="w-full" asChild>
+          <Link href="/doctors">
+            View All Doctors
+            <ArrowRight aria-hidden />
+          </Link>
+        </Button>
+      </Reveal>
     </Section>
   );
 }

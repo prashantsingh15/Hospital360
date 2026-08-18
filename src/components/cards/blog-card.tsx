@@ -55,9 +55,9 @@ export function BlogCard({ post, className }: BlogCardProps) {
 
         <div className="mt-5 flex items-center gap-3 border-t border-border pt-5">
           <InitialsAvatar name={post.author} className="size-9 text-xs" />
-          <div className="min-w-0">
-            <p className="truncate text-sm font-semibold">{post.author}</p>
-            <p className="truncate text-xs text-muted">{post.authorRole}</p>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold">{post.author}</p>
+            <p className="text-xs text-muted">{post.authorRole}</p>
           </div>
           <ArrowUpRight
             aria-hidden

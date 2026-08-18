@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { galleryItems } from "@/data";
 import type { GalleryItem } from "@/types";
 import { Button } from "@/components/ui/button";
@@ -50,6 +51,14 @@ export function GalleryPreview() {
           </Reveal>
         ))}
       </div>
+      <Reveal className="mt-10 flex justify-center sm:hidden">
+        <Button variant="outline" size="lg" className="w-full" asChild>
+          <Link href="/gallery">
+            View Full Gallery
+            <ArrowRight aria-hidden />
+          </Link>
+        </Button>
+      </Reveal>
     </Section>
   );
 }

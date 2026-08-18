@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data";
 import { Button } from "@/components/ui/button";
 import { BlogCard } from "@/components/cards/blog-card";
@@ -32,6 +33,14 @@ export function BlogPreview() {
           </Reveal>
         ))}
       </div>
+      <Reveal className="mt-10 flex justify-center sm:hidden">
+        <Button variant="outline" size="lg" className="w-full" asChild>
+          <Link href="/blog">
+            View All Articles
+            <ArrowRight aria-hidden />
+          </Link>
+        </Button>
+      </Reveal>
     </Section>
   );
 }
