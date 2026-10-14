@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { FloatingActions } from "@/components/layout/floating-actions";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
+import { PwaInstaller } from "@/components/pwa/pwa-installer";
 import "./globals.css";
 
 const geist = Geist({
@@ -37,6 +38,15 @@ export const metadata: Metadata = {
     site.name,
   ],
   applicationName: site.name,
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: site.name,
+  },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icons/apple-touch-icon.png",
+  },
   authors: [{ name: site.name }],
   openGraph: {
     type: "website",
@@ -92,6 +102,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <FloatingActions />
+          <PwaInstaller />
         </Providers>
         <OrganizationJsonLd />
       </body>
