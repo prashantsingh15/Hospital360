@@ -192,38 +192,38 @@ export function Hero() {
               </div>
             </div>
 
-            {/* floating glass cards */}
+            {/* floating glass cards — contained inside image bounds on mobile, extended on tablet/desktop */}
             <div
-              className="absolute -left-3 top-8 flex animate-float items-center gap-3 rounded-2xl border border-border p-3.5 shadow-lifted glass sm:-left-6"
+              className="absolute left-2 top-3 sm:-left-6 sm:top-8 flex animate-float items-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border border-border p-2 sm:p-3.5 shadow-lifted glass"
               style={{ animationDelay: "0s" }}
             >
-              <CheckCircle2 className="size-5 shrink-0 text-emerald" aria-hidden />
+              <CheckCircle2 className="size-4 sm:size-5 shrink-0 text-emerald" aria-hidden />
               <div>
-                <p className="text-sm font-semibold">Appointment Confirmed</p>
-                <p className="text-xs text-muted">Today · 10:30 AM</p>
+                <p className="text-xs sm:text-sm font-semibold">Appointment Confirmed</p>
+                <p className="text-[10px] sm:text-xs text-muted">Today · 10:30 AM</p>
               </div>
             </div>
 
             <div
-              className="absolute -right-3 bottom-10 flex animate-float items-center gap-3 rounded-2xl border border-border p-3.5 shadow-lifted glass sm:-right-6"
+              className="absolute right-2 bottom-3 sm:-right-6 sm:bottom-10 flex animate-float items-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border border-border p-2 sm:p-3.5 shadow-lifted glass"
               style={{ animationDelay: "1.4s" }}
             >
-              <InitialsAvatar name={leadDoctor.name} className="size-9 text-xs" />
+              <InitialsAvatar name={leadDoctor.name} className="size-7 sm:size-9 text-xs" />
               <div>
-                <p className="flex items-center gap-1.5 text-sm font-semibold">
+                <p className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold">
                   Dr. {leadSurname} online now
                   <span className="size-1.5 rounded-full bg-emerald" aria-hidden />
                 </p>
-                <p className="text-xs text-muted">{leadDepartment}</p>
+                <p className="text-[10px] sm:text-xs text-muted">{leadDepartment}</p>
               </div>
             </div>
 
             <div
-              className="absolute -top-5 right-8 hidden animate-float items-center gap-2.5 rounded-2xl border border-border p-3.5 shadow-lifted glass sm:flex"
+              className="absolute -top-4 right-4 sm:-top-5 sm:right-8 hidden animate-float items-center gap-2.5 rounded-2xl border border-border p-2.5 sm:p-3.5 shadow-lifted glass sm:flex"
               style={{ animationDelay: "2.6s" }}
             >
-              <HeartPulse className="size-5 shrink-0 text-primary" aria-hidden />
-              <p className="text-sm font-semibold">24×7 ICU Monitoring</p>
+              <HeartPulse className="size-4 sm:size-5 shrink-0 text-primary" aria-hidden />
+              <p className="text-xs sm:text-sm font-semibold">24×7 ICU Monitoring</p>
             </div>
           </motion.div>
         </div>

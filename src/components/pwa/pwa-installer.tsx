@@ -83,10 +83,10 @@ export function PwaInstaller() {
     window.addEventListener("appinstalled", handleAppInstalled);
     window.addEventListener("open-pwa-install", handleCustomTrigger);
 
-    // 6. Show banner immediately on page mount (300ms)
+    // 6. Show banner after 2s on page mount so user sees website content & images first
     const timer = setTimeout(() => {
       setShowBanner(true);
-    }, 400);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
