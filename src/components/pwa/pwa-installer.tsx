@@ -24,19 +24,44 @@ export function PwaInstaller() {
   const [installed, setInstalled] = React.useState(false);
 
   React.useEffect(() => {
-    // 1. Register Service Worker immediately
-    if (
-      typeof window !== "undefined" &&
-      "serviceWorker" in navigator
-    ) {
-      navigator.serviceWorker
-        .register("/sw.js")
-        .then((reg) => {
-          console.log("Hospital360 SW registered successfully:", reg.scope);
-        })
-        .catch((err) => {
-          console.debug("SW registration error:", err);
+    // 1. Active Cache Purge & Service Worker Upgrade
+    if (typeof window !== "undefined") {
+      if ("caches" in window) {
+        caches.keys().then((names) => {
+          for (const name of names) {
+            if (name !== "hospital360-v4-network-first") {
+              caches.delete(name);
+            }
+          }
         });
+      }
+
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const reg of registrations) {
+            reg.update();
+          }
+        });
+
+        navigator.serviceWorker
+          .register("/sw.js?v=4")
+          .then((reg) => {
+            reg.update();
+            reg.onupdatefound = () => {
+              const worker = reg.installing;
+              if (worker) {
+                worker.onstatechange = () => {
+                  if (worker.state === "installed" && navigator.serviceWorker.controller) {
+                    window.location.reload();
+                  }
+                };
+              }
+            };
+          })
+          .catch((err) => {
+            console.debug("SW registration error:", err);
+          });
+      }
     }
 
     // 2. Check if already running as installed app
