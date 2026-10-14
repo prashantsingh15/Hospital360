@@ -83,13 +83,10 @@ export function PwaInstaller() {
     window.addEventListener("appinstalled", handleAppInstalled);
     window.addEventListener("open-pwa-install", handleCustomTrigger);
 
-    // 6. Show banner after a slight delay (1.2s) unless already in app or dismissed in this session
-    const isDismissed = sessionStorage.getItem("pwa_prompt_dismissed") === "true";
+    // 6. Show banner immediately on page mount (300ms)
     const timer = setTimeout(() => {
-      if (!isDismissed) {
-        setShowBanner(true);
-      }
-    }, 1200);
+      setShowBanner(true);
+    }, 400);
 
     return () => {
       clearTimeout(timer);
@@ -123,7 +120,6 @@ export function PwaInstaller() {
 
   const handleDismiss = () => {
     setShowBanner(false);
-    sessionStorage.setItem("pwa_prompt_dismissed", "true");
   };
 
   if (isStandalone || installed) {

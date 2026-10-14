@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, Search } from "lucide-react";
+import { Download, Menu, Phone, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 import { navEntries } from "@/data/navigation";
@@ -95,6 +95,16 @@ export function Navbar() {
                 <Phone aria-hidden />
                 {site.emergency}
               </a>
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-pwa-install"))}
+              className="gap-1.5 border-primary/30 text-primary hover:bg-primary/10 cursor-pointer"
+            >
+              <Download className="size-3.5" aria-hidden />
+              <span className="hidden sm:inline">Install</span> App
             </Button>
             <Button size="sm" asChild className="hidden md:inline-flex">
               <Link href="/appointment">Book Appointment</Link>
