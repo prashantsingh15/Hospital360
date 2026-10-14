@@ -128,37 +128,39 @@ export function PwaInstaller() {
 
   return (
     <>
-      {/* 1. Permanent Floating "Download App" button on mobile & desktop */}
-      <aside
-        aria-label="Download web app"
-        className="fixed bottom-5 left-5 z-40 sm:bottom-6 sm:left-6"
-      >
-        <button
-          type="button"
-          onClick={handleInstallClick}
-          aria-label="Download Hospital360 Web Application"
-          className="group flex items-center gap-2.5 rounded-full bg-slate-900/90 hover:bg-slate-900 border border-white/20 px-4 py-2.5 text-xs font-semibold text-white shadow-lifted backdrop-blur-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+      {/* 1. Floating "Download App" button — only visible when banner is closed */}
+      {!showBanner && (
+        <aside
+          aria-label="Download web app"
+          className="fixed bottom-5 left-5 z-40 sm:bottom-6 sm:left-6"
         >
-          <div className="flex size-6 items-center justify-center rounded-full bg-primary text-white">
-            <Download className="size-3.5" aria-hidden />
-          </div>
-          <span>Download App</span>
-          <span className="hidden sm:inline-block rounded-full bg-emerald/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
-            PWA
-          </span>
-        </button>
-      </aside>
+          <button
+            type="button"
+            onClick={handleInstallClick}
+            aria-label="Download Hospital360 Web Application"
+            className="group flex items-center gap-2.5 rounded-full bg-slate-900/90 hover:bg-slate-900 border border-white/20 px-4 py-2 text-xs font-semibold text-white shadow-lifted backdrop-blur-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            <div className="flex size-5 items-center justify-center rounded-full bg-primary text-white">
+              <Download className="size-3" aria-hidden />
+            </div>
+            <span>Install App</span>
+            <span className="hidden sm:inline-block rounded-full bg-emerald/20 px-1.5 py-0.5 text-[9px] font-bold text-emerald-300">
+              PWA
+            </span>
+          </button>
+        </aside>
+      )}
 
-      {/* 2. Interactive Bottom Slide-Up Notification Banner */}
+      {/* 2. Slide-Up Notification Banner — positioned at bottom-right on laptop to avoid blocking content */}
       <AnimatePresence>
         {showBanner && (
           <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             role="alert"
-            className="fixed bottom-20 left-4 right-4 z-50 mx-auto max-w-md rounded-2xl border border-primary/30 bg-slate-950/95 p-4 text-white shadow-2xl backdrop-blur-xl sm:bottom-20 sm:left-6 sm:right-auto sm:max-w-sm"
+            className="fixed bottom-5 left-4 right-4 z-50 mx-auto max-w-sm rounded-2xl border border-primary/40 bg-slate-950/95 p-4 text-white shadow-2xl backdrop-blur-xl sm:bottom-6 sm:left-auto sm:right-6 sm:max-w-xs"
           >
             <div className="flex items-start gap-3.5">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-emerald text-white shadow-soft">

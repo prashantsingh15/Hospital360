@@ -57,9 +57,9 @@ export function Navbar() {
                   key={entry.label}
                   href={entry.href}
                   className={cn(
-                    "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                    "relative rounded-full px-3 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm font-medium transition-colors",
                     isActive(entry.href)
-                      ? "text-primary"
+                      ? "text-primary font-semibold"
                       : "text-muted hover:text-foreground"
                   )}
                 >
@@ -67,7 +67,7 @@ export function Navbar() {
                   {isActive(entry.href) ? (
                     <span
                       aria-hidden
-                      className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-primary"
+                      className="absolute inset-x-3 xl:inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-primary"
                     />
                   ) : null}
                 </Link>
@@ -75,12 +75,23 @@ export function Navbar() {
             )}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Prominent Mobile "Download / Install App" Button (visible only on mobile/tablet) */}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-pwa-install"))}
+              aria-label="Download Hospital360 App"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-bold text-white shadow-soft transition-all hover:bg-primary-hover active:scale-95 cursor-pointer lg:hidden"
+            >
+              <Download className="size-3.5" aria-hidden />
+              <span>Install App</span>
+            </button>
+
             <button
               type="button"
               aria-label="Search"
               onClick={() => setSearchOpen(true)}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-border bg-surface text-muted transition-all duration-200 hover:border-primary/50 hover:text-primary"
+              className="grid size-9 sm:size-11 cursor-pointer place-items-center rounded-full border border-border bg-surface text-muted transition-all duration-200 hover:border-primary/50 hover:text-primary"
             >
               <Search className="size-4" aria-hidden />
             </button>
@@ -89,22 +100,12 @@ export function Navbar() {
               variant="emerald"
               size="sm"
               asChild
-              className="hidden xl:inline-flex"
+              className="hidden 2xl:inline-flex"
             >
               <a href={site.emergencyHref}>
                 <Phone aria-hidden />
                 {site.emergency}
               </a>
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={() => window.dispatchEvent(new CustomEvent("open-pwa-install"))}
-              className="gap-1.5 border-primary/30 text-primary hover:bg-primary/10 cursor-pointer"
-            >
-              <Download className="size-3.5" aria-hidden />
-              <span className="hidden sm:inline">Install</span> App
             </Button>
             <Button size="sm" asChild className="hidden md:inline-flex">
               <Link href="/appointment">Book Appointment</Link>
@@ -113,7 +114,7 @@ export function Navbar() {
               type="button"
               aria-label="Open menu"
               onClick={() => setDrawerOpen(true)}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-border bg-surface text-foreground transition-all duration-200 hover:border-primary/50 hover:text-primary lg:hidden"
+              className="grid size-9 sm:size-11 cursor-pointer place-items-center rounded-full border border-border bg-surface text-foreground transition-all duration-200 hover:border-primary/50 hover:text-primary lg:hidden"
             >
               <Menu className="size-5" aria-hidden />
             </button>
