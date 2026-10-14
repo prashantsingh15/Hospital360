@@ -1,7 +1,8 @@
-// Hospital360 Service Worker
-const CACHE_NAME = 'hospital360-v1';
+// Hospital360 Ultra-Fast Service Worker
+const CACHE_NAME = 'hospital360-v2';
 const PRECACHE_URLS = [
   '/',
+  '/images/gallery/atrium.jpg',
   '/icon.svg',
   '/manifest.webmanifest',
 ];

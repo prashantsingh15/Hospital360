@@ -92,6 +92,13 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/gallery/atrium.jpg"
+          // @ts-ignore
+          fetchPriority="high"
+        />
       </head>
       <body className="flex min-h-dvh flex-col">
         <Providers>

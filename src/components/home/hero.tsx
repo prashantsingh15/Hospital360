@@ -172,6 +172,8 @@ export function Hero() {
                   alt="Hospital360 State-of-the-art Medical Center"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="eager"
+                  fetchPriority="high"
+                  decoding="sync"
                 />
                 <div
                   aria-hidden
