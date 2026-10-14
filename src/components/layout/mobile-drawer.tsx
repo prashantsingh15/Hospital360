@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Phone } from "lucide-react";
+import { ChevronDown, Download, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 import { navEntries } from "@/data/navigation";
@@ -105,6 +105,18 @@ export function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
         </nav>
 
         <div className="flex flex-col gap-3 border-t border-border p-5 pb-safe">
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full gap-2 border-primary/40 text-primary hover:bg-primary/10"
+            onClick={() => {
+              onOpenChange(false);
+              window.dispatchEvent(new CustomEvent("open-pwa-install"));
+            }}
+          >
+            <Download className="size-4" aria-hidden />
+            Download App (Install PWA)
+          </Button>
           <Button variant="emerald" asChild>
             <a href={site.emergencyHref}>
               <Phone aria-hidden />

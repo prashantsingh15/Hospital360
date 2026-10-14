@@ -122,11 +122,11 @@ export function QuickAppointment() {
       <Reveal>
         <Card className="grid overflow-hidden lg:grid-cols-2">
           <div className="relative bg-gradient-to-br from-primary to-primary-active p-8 text-white sm:p-12">
-            <div aria-hidden className="absolute inset-0 bg-dots opacity-20" />
             <div className="relative flex h-full flex-col gap-5">
-              <Badge variant="glass" className="border-white/25 text-white">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary shadow-soft">
+                <span className="size-2 rounded-full bg-emerald animate-pulse" />
                 Quick Appointment
-              </Badge>
+              </div>
               <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
                 Book in under 60 seconds.
               </h2>

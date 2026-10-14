@@ -99,6 +99,11 @@ export default function RootLayout({
           // @ts-ignore
           fetchPriority="high"
         />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Hospital360" />
       </head>
       <body className="flex min-h-dvh flex-col">
         <Providers>
