@@ -191,6 +191,10 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} Hospital360. All rights reserved.
           </p>
+          <p className="text-white/75 font-medium">
+            Developed by{" "}
+            <span className="font-semibold text-white">Thakur Prashant</span>
+          </p>
           <div className="flex items-center gap-6">
             <Link
               href="/privacy-policy"

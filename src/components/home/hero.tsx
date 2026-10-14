@@ -42,135 +42,6 @@ function Entrance({
   );
 }
 
-/** Premium flat illustration of the Hospital360 campus — pure SVG, no assets. */
-function HospitalIllustration() {
-  const towerWindows = [
-    { col: 1, row: 0, lit: true },
-    { col: 3, row: 1, lit: true },
-    { col: 0, row: 2, lit: true },
-    { col: 2, row: 3, lit: true },
-  ];
-  const isLit = (col: number, row: number) =>
-    towerWindows.some((w) => w.col === col && w.row === row);
-
-  return (
-    <svg
-      viewBox="0 0 640 480"
-      role="img"
-      aria-label="Hospital360 hospital illustration"
-      className="h-auto w-full rounded-3xl"
-    >
-      <defs>
-        <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#EFF6FF" />
-          <stop offset="100%" stopColor="#DBEAFE" />
-        </linearGradient>
-        <linearGradient id="hero-tower" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="100%" stopColor="#EFF6FF" />
-        </linearGradient>
-      </defs>
-
-      {/* sky */}
-      <rect width="640" height="480" rx="24" fill="url(#hero-sky)" />
-      <circle cx="528" cy="88" r="52" fill="#FFFFFF" opacity="0.35" />
-      <circle cx="528" cy="88" r="34" fill="#FFFFFF" opacity="0.9" />
-      <g fill="#FFFFFF">
-        <ellipse cx="150" cy="88" rx="46" ry="15" opacity="0.85" />
-        <ellipse cx="188" cy="78" rx="32" ry="12" opacity="0.7" />
-        <ellipse cx="410" cy="150" rx="38" ry="12" opacity="0.5" />
-      </g>
-      {/* floating plus marks */}
-      <g fill="#0F6FFF" opacity="0.14">
-        <path d="M86 176h6v16h16v6h-16v16h-6v-16H70v-6h16z" />
-        <path d="M560 190h5v13h13v5h-13v13h-5v-13h-13v-5h13z" />
-      </g>
-
-      {/* ground */}
-      <rect x="0" y="408" width="640" height="72" fill="#D1FAE5" opacity="0.55" />
-      <ellipse cx="320" cy="426" rx="210" ry="12" fill="#0F6FFF" opacity="0.08" />
-
-      {/* left wing */}
-      <rect x="88" y="252" width="120" height="168" rx="16" fill="#FFFFFF" stroke="#BFDBFE" strokeWidth="1.5" />
-      <rect x="128" y="236" width="40" height="16" rx="8" fill="#10B981" />
-      {[0, 1].map((col) =>
-        [0, 1, 2].map((row) => (
-          <rect
-            key={`lw-${col}-${row}`}
-            x={108 + col * 46}
-            y={278 + row * 40}
-            width="28"
-            height="22"
-            rx="5"
-            fill="#DBEAFE"
-          />
-        ))
-      )}
-
-      {/* right wing */}
-      <rect x="432" y="224" width="120" height="196" rx="16" fill="#FFFFFF" stroke="#BFDBFE" strokeWidth="1.5" />
-      <rect x="472" y="208" width="40" height="16" rx="8" fill="#0F6FFF" opacity="0.85" />
-      {[0, 1].map((col) =>
-        [0, 1, 2, 3].map((row) => (
-          <rect
-            key={`rw-${col}-${row}`}
-            x={452 + col * 46}
-            y={250 + row * 40}
-            width="28"
-            height="22"
-            rx="5"
-            fill="#DBEAFE"
-          />
-        ))
-      )}
-
-      {/* main tower */}
-      <rect x="208" y="140" width="224" height="280" rx="20" fill="url(#hero-tower)" stroke="#BFDBFE" strokeWidth="1.5" />
-      {/* cross tile */}
-      <rect x="272" y="84" width="96" height="96" rx="24" fill="#0F6FFF" />
-      <rect x="310" y="104" width="20" height="56" rx="7" fill="#FFFFFF" />
-      <rect x="292" y="122" width="56" height="20" rx="7" fill="#FFFFFF" />
-      {/* window grid */}
-      {[0, 1, 2, 3].map((col) =>
-        [0, 1, 2, 3].map((row) => (
-          <rect
-            key={`tw-${col}-${row}`}
-            x={228 + col * 52}
-            y={196 + row * 38}
-            width="28"
-            height="22"
-            rx="5"
-            fill={isLit(col, row) ? "#0F6FFF" : "#DBEAFE"}
-            opacity={isLit(col, row) ? 0.85 : 1}
-          />
-        ))
-      )}
-      {/* entrance */}
-      <rect x="282" y="350" width="76" height="12" rx="6" fill="#0F6FFF" />
-      <rect x="294" y="362" width="52" height="58" rx="8" fill="#0F6FFF" opacity="0.9" />
-      <rect x="318" y="362" width="4" height="58" fill="#EFF6FF" opacity="0.6" />
-
-      {/* trees */}
-      <g>
-        <rect x="60" y="394" width="8" height="24" rx="3" fill="#0F6FFF" opacity="0.35" />
-        <circle cx="64" cy="380" r="20" fill="#10B981" />
-        <circle cx="78" cy="388" r="13" fill="#10B981" opacity="0.7" />
-      </g>
-      <g>
-        <rect x="572" y="394" width="8" height="24" rx="3" fill="#0F6FFF" opacity="0.35" />
-        <circle cx="576" cy="378" r="21" fill="#10B981" />
-        <circle cx="560" cy="388" r="13" fill="#10B981" opacity="0.7" />
-      </g>
-      {/* bushes */}
-      <ellipse cx="240" cy="416" rx="26" ry="10" fill="#10B981" opacity="0.45" />
-      <ellipse cx="404" cy="416" rx="26" ry="10" fill="#10B981" opacity="0.45" />
-
-      {/* walkway */}
-      <rect x="308" y="420" width="24" height="60" fill="#DBEAFE" opacity="0.9" />
-    </svg>
-  );
-}
-
 export function Hero() {
   const sectionRef = React.useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
@@ -293,8 +164,30 @@ export function Hero() {
         {/* visual — visible on first paint; parallax only (no entrance fade, for LCP) */}
         <div className="relative mt-8 lg:mt-0">
           <motion.div style={{ y: visualY }}>
-            <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-lifted">
-              <HospitalIllustration />
+            <div className="group relative overflow-hidden rounded-[2rem] border border-border bg-surface p-2 shadow-lifted sm:p-3">
+              <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[1.5rem] bg-slate-900">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/gallery/atrium.jpg"
+                  alt="Hospital360 State-of-the-art Medical Center"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="eager"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent pointer-events-none"
+                />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/90 px-3 py-1 text-[11px] font-semibold backdrop-blur-md">
+                      Hospital360 Main Campus
+                    </span>
+                    <p className="mt-1 text-xs text-white/85 drop-shadow">
+                      500+ Beds · Level 1 Trauma Center
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* floating glass cards */}
